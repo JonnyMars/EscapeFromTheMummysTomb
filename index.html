@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <meta charset="UTF-8"/>
+  <title>Escape From The Mummy's Tomb</title>
+  <script src="phaser.min.js"></script>
+  <script src="Boot.js"></script>
+  <script src="PreLoader.js"></script>
+  <script src="Title.js"></script>
+  <script src="Level1.js"></script>
+
+  <body>
+    <script type = "text/javascript">
+      window.onload = function(){
+        var game = new Phaser.Game(640, 480, Phaser.AUTO, '');
+
+        game.state.add('Boot', Game.Boot);
+        game.state.add('PreLoader', Game.PreLoader);
+        game.state.add('Title', Game.Title);
+        game.state.add('Level1', Game.Level1);
+
+        game.state.start('Boot');
+      }
+
+    </script>
+
+
+
+  </body>
+</html>
