@@ -18,12 +18,15 @@ Game.PreLoader.prototype = {
 
     //Load all assets
 
+    //Global Assets
+
+    this.load.spritesheet('mummy', 'assets/mummy-spritesheet-min.png', 27.333, 62);
+
+    //Level 1 assets
+
     this.load.tilemap('map', 'lvl/lvl12.json', null, Phaser.Tilemap.TILED_JSON);
-
     this.load.image('tileset', 'lvl/tilemap.png');
-
     this.load.spritesheet('player', 'assets/spritesheet-64-high.png', 35, 64);
-    this.load.spritesheet('mummy', 'assets/spritesheet-64-high.png', 35, 64);
 
 
 

@@ -1,6 +1,7 @@
-Mummy = function(index, game, x, y){
+function Mummy(index, game, x, y, frame, tweenspeed, tweenx){
 
-    this.mummy = game.add.sprite(x, y, 'mummy'); //mummy object (global)
+    this.mummy = game.add.sprite(x, y, 'mummy', frame); //mummy object (global)
+    this.mummy.animations.add('mummy', [0, 1, 2, 1], 3, true);
     this.mummy.anchor.setTo(0.5, 0.5);
     this.mummy.name = index.toString(); //assign names to each new mummy created
     game.physics.enable(this.mummy, Phaser.Physics.ARCADE); //enable physic for mummy
@@ -8,7 +9,7 @@ Mummy = function(index, game, x, y){
     this.mummy.body.collideWorldBounds = true; //do not leave bounds of cavnvas
 
 
-    this.mummyTween = game.add.tween(this.mummy).to({x: 425}, 1000,  'Linear', true, 0, 100, true); //{x:425} is it's x location destingation. No need to do Y because starting position places it on platform.
+    this.mummyTween = game.add.tween(this.mummy).to({x: tweenx}, tweenspeed,  'Linear', true, 0, 100, true); //{x:425} is it's x location destingation. No need to do Y because starting position places it on platform.
 }
 
 var enemy;
@@ -49,11 +50,12 @@ Game.Level1.prototype = {
     player.animations.add('left', [4, 5, 6], 4, true);
     this.physics.arcade.enable(player);
     this.camera.follow(player);
+    player.body.bounce.y = 0.18;
     player.body.collideWorldBounds = true;
 
     controls = this.input.keyboard.createCursorKeys();
 
-    mummy1 = new Mummy(0, game, 720, 320); //Mummy's starting position.
+    mummy1 = new Mummy(0, game, 720, 320, 3, 1000, 425); //Mummy's starting position.
 
 
 
@@ -65,6 +67,8 @@ Game.Level1.prototype = {
     this.physics.arcade.collide(mummy1.mummy, platformslayer);
 
     player.body.velocity.x = 0;
+
+    mummy1.mummy.animations.play('mummy');
 
     if (controls.right.isDown) {
       player.animations.play('right');
@@ -92,7 +96,7 @@ Game.Level1.prototype = {
   },
 
   resetPlayer: function(){
-    player.reset(100, 420);
+    this.state.start('Level1');
   }
 
 }
