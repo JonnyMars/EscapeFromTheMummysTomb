@@ -20,7 +20,7 @@ Game.Level1 = function(game){};
 var map;
 var backgroundlayer;
 var platformslayer;
-
+var layer;
 var player;
 var controls = {};
 var playerSpeed = 250;
@@ -43,7 +43,7 @@ Game.Level1.prototype = {
 
     map.setCollisionBetween(1, 100, true, 'Platforms');
 
-    player = this.add.sprite(100,420,'player');
+    player = this.add.sprite(100, 620,'player');
     player.anchor.setTo(0.5, 0.5);
 
     player.animations.add('right', [0, 1, 2], 4, true);
@@ -55,7 +55,7 @@ Game.Level1.prototype = {
 
     controls = this.input.keyboard.createCursorKeys();
 
-    mummy1 = new Mummy(0, game, 720, 320, 3, 1000, 425); //Mummy's starting position.
+    mummy1 = new Mummy(0, game, 550, 380, 3, 1000, 340); //Mummy's starting position.
 
 
 
