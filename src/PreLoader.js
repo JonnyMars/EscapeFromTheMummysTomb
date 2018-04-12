@@ -21,6 +21,7 @@ Game.PreLoader.prototype = {
     //Global Assets
 
     this.load.spritesheet('mummy', 'assets/mummy-spritesheet-min.png', 27.333, 62);
+    this.load.spritesheet('item', 'assets/itemsheet.png', 32, 32);
 
     //Level 1 assets
 
