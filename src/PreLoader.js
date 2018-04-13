@@ -29,6 +29,9 @@ Game.PreLoader.prototype = {
 
     this.load.tilemap('map', 'lvl/lvl1.json', null, Phaser.Tilemap.TILED_JSON);
     this.load.image('tileset', 'lvl/tilemap.png');
+    this.load.image('bottle', 'assets/items/bottle.png');
+    this.load.image('firestick', 'assets/items/firestick.png');
+    this.load.image('goldmask', 'assets/items/goldmask.png');
     this.load.spritesheet('player', 'assets/spritesheet-64-high.png', 35, 64);
 
 

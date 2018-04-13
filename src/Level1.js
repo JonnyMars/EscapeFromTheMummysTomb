@@ -11,7 +11,7 @@ function Mummy(index, game, x, y, frame, tweenspeed, tweenx){
     this.mummyTween = game.add.tween(this.mummy).to({x: tweenx}, tweenspeed,  'Linear', true, 0, 100, true); //{x:425} is it's x location destingation. No need to do Y because starting position places it on platform.
 }
 
-function Item(index, game, x, y, text){
+function Item(index, game, x, y, text, textHeightAdjust, image, imgheight,imgscaleX, imgscaleY){
   this.item = game.add.sprite(x, y, 'item', 0);
   this.item.anchor.setTo(0.5, 0.5);
   this.item.name = index.toString(); //assign names to each new item created
@@ -20,18 +20,27 @@ function Item(index, game, x, y, text){
   this.item.body.collideWorldBounds = true;
   this.item.animations.add('open', [1], 1, false);
 
-  this.item.popup = game.add.sprite(game.camera.width / 2, game.camera.height / 2, 'popup');
+  this.item.popup = game.add.sprite(game.camera.width / 2, (game.camera.height / 2) - 30, 'popup');
   this.item.popup.anchor.setTo(0.5, 0.5);
   this.item.popup.fixedToCamera = true;
   this.item.popup.visible = false;
-  this.item.info = game.add.text(game.camera.width / 2, game.camera.height / 2, text, {fontSize: '32px', fill: '#000'});
+  this.item.info = game.add.text((game.camera.width / 2) - 150, (game.camera.height / 2) - 100, text, {fontSize: '22px', fill: '#fff'});
   this.item.info.visible = false;
-  this.item.info.anchor.setTo(0.5, 0.5);
+  this.item.info.anchor.setTo(0, textHeightAdjust);
   this.item.info.fixedToCamera = true;
-  this.item.button = game.add.button(game.camera.width / 2, (game.camera.height / 2) + 200, 'popupbutton', function() {this.item.popup.visible = false; this.item.info.visible = false; this.item.button.visible = false;}, this)
+  this.item.button = game.add.button(game.camera.width / 2, (game.camera.height / 2) + 200, 'popupbutton', function() {this.item.popup.visible = false; this.item.info.visible = false; this.item.button.visible = false; this.item.image.visible = false; this.item.buttontext.visible = false;}, this)
   this.item.button.anchor.setTo(0.5, 0.5);
   this.item.button.fixedToCamera = true;
   this.item.button.visible = false;
+  this.item.buttontext = game.add.text(game.camera.width / 2, (game.camera.height / 2) + 200, "Close", {fontSize: '22px', fill: '#fff'});
+  this.item.buttontext.visible = false;
+  this.item.buttontext.anchor.setTo(0.5, 0.5);
+  this.item.buttontext.fixedToCamera = true;
+  this.item.image = game.add.sprite(game.camera.width / 2, (game.camera.height / 2) - imgheight, image);
+  this.item.image.anchor.setTo(0.5, 0.5);
+  this.item.image.fixedToCamera = true;
+  this.item.image.scale.setTo(imgscaleX,imgscaleY)
+  this.item.image.visible = false;
 }
 
 Game.Level1 = function(game){};
@@ -47,6 +56,7 @@ var playerSpeed = 250;
 var itemsleft;
 var counter;
 var lvl2button;
+var lvl2buttontext;
 
 Game.Level1.prototype = {
 
@@ -80,19 +90,22 @@ Game.Level1.prototype = {
     player.body.collideWorldBounds = true;
 
 
-    lvl2button = game.add.button(game.camera.width / 2, (game.camera.height / 2) + 200, 'popupbutton', function() {game.state.start('Level1');}, this)
+    lvl2button = game.add.button(game.camera.width / 2, game.camera.height / 2, 'popupbutton', function() {game.state.start('Level1');}, this)
     lvl2button.visible = false;
     lvl2button.anchor.setTo(0.5, 0.5);
     lvl2button.fixedToCamera = true;
-
+    lvl2buttontext = game.add.text(game.camera.width / 2, (game.camera.height / 2), "Next Level", {fontSize: '22px', fill: '#fff'});
+    lvl2buttontext.visible = false;
+    lvl2buttontext.anchor.setTo(0.5, 0.40);
+    lvl2buttontext.fixedToCamera = true;
 
     controls = this.input.keyboard.createCursorKeys();
 
     mummy1 = new Mummy(0, game, 550, 380, 3, 1000, 340); //Mummy's starting position.
 
-    item1 = new Item(0, game, 500, 570, "This is item 1!");
-    item2 = new Item(0, game, 1050, 200);
-    item3 = new Item(0, game, 302, 100, "What UP FAM");
+    item1 = new Item(0, game, 500, 570, "\n                 BOTTLE \n \n \n \n \n This fancy bottle allowed \n the owner to drink in the \n afterlife. Having it in the \n tomb, even when empty, \n guarantees an ever-lasting \n supply of drink.", 0.35, 'bottle', 110, 0.6, 0.55); //image, height, scalex, scaley
+    item2 = new Item(0, game, 1050, 200, "\n               FIRE STICK \n \n \n \n \n This 'fire stick' was rotated \n at speed against this piece \n of wood to create enough \n friction to light a fire. \n This provided fire and \n warmth for cooking in the \n afterlife.", 0.35, 'firestick', 117, 0.6, 0.55);
+    item3 = new Item(0, game, 302, 100, "\n              GOLD MASK \n \n \n \n \n This mask would be placed \n over the head of a mummy \n to protect it. The feather \n pattern may represent the \n protective wings of the  \n goddess Isis or the bird- \n like spirit of the dead 'Ba'.", 0.35, 'goldmask', 120, 0.6, 0.55);
 
 
   },
@@ -139,9 +152,11 @@ Game.Level1.prototype = {
             item1.item.body.enable = false;
             item1.item.popup.visible = true;
             item1.item.info.visible = true;
-            item1.item.button.visible = true;
+            item1.item.image.visible = true;
+            game.time.events.add(Phaser.Timer.SECOND * 3, function() {item1.item.button.visible = true; item1.item.buttontext.visible = true}, this);
             game.world.bringToTop(item1.item.popup);
             game.world.bringToTop(item1.item.info);
+            game.world.bringToTop(item1.item.image);
     }
   }
     if(checkOverlap(player, item2.item)){
@@ -153,9 +168,12 @@ Game.Level1.prototype = {
             counter.text = 'Items Left: ' + itemsLeft;
             item2.item.body.enable = false;
             item2.item.popup.visible = true;
-            item2.item.button.visible = true;
+            item2.item.info.visible = true;
+            item2.item.image.visible = true;
+            game.time.events.add(Phaser.Timer.SECOND * 3, function() {item2.item.button.visible = true; item2.item.buttontext.visible = true}, this);
             game.world.bringToTop(item2.item.popup);
             game.world.bringToTop(item2.item.info);
+            game.world.bringToTop(item2.item.image);
     }
   }
     if(checkOverlap(player, item3.item)){
@@ -167,13 +185,17 @@ Game.Level1.prototype = {
             counter.text = 'Items Left: ' + itemsLeft;
             item3.item.body.enable = false;
             item3.item.popup.visible = true;
-            item3.item.button.visible = true;
-            game.world.bringToTop(item2.item.popup);
-            game.world.bringToTop(item2.item.info);
+            item3.item.info.visible = true;
+            item3.item.image.visible = true;
+            game.time.events.add(Phaser.Timer.SECOND * 3, function() {item3.item.button.visible = true; item3.item.buttontext.visible = true}, this);
+            game.world.bringToTop(item3.item.popup);
+            game.world.bringToTop(item3.item.info);
+            game.world.bringToTop(item3.item.image);
     }
   }
     if(itemsLeft == 0){
       lvl2button.visible = true;
+      lvl2buttontext.visible = true;
   }
 },
 
