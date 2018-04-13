@@ -193,7 +193,7 @@ Game.Level1.prototype = {
             game.world.bringToTop(item3.item.image);
     }
   }
-    if(itemsLeft == 0){
+    if(itemsLeft == 0 && (item3.item.popup.visible == false && item3.item.popup.visible == false && item2.item.popup.visible == false)){ //This checks that all three pop ups have been read and closed before enabling the next level button
       lvl2button.visible = true;
       lvl2buttontext.visible = true;
   }
