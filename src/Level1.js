@@ -55,8 +55,8 @@ var controls = {};
 var playerSpeed = 250;
 var itemsleft;
 var counter;
-var lvl2button;
-var lvl2buttontext;
+var nxtlvlbutton;
+var nxtlvlbuttontext;
 
 Game.Level1.prototype = {
 
@@ -68,6 +68,12 @@ Game.Level1.prototype = {
     map = this.add.tilemap('map', 1, 100);
 
     map.addTilesetImage('tileset');
+
+    /* - music, this stays througout the states.
+    var music = game.add.audio('soundtrack', true);
+    music.loop = true;
+    music.play();
+    */
 
     layer = map.createLayer('Background');
     platformslayer = map.createLayer('Platforms');
@@ -90,14 +96,14 @@ Game.Level1.prototype = {
     player.body.collideWorldBounds = true;
 
 
-    lvl2button = game.add.button(game.camera.width / 2, game.camera.height / 2, 'popupbutton', function() {game.state.start('Level2');}, this)
-    lvl2button.visible = false;
-    lvl2button.anchor.setTo(0.5, 0.5);
-    lvl2button.fixedToCamera = true;
-    lvl2buttontext = game.add.text(game.camera.width / 2, (game.camera.height / 2), "Next Level", {fontSize: '22px', fill: '#fff'});
-    lvl2buttontext.visible = false;
-    lvl2buttontext.anchor.setTo(0.5, 0.40);
-    lvl2buttontext.fixedToCamera = true;
+    nxtlvlbutton = game.add.button(game.camera.width / 2, game.camera.height / 2, 'popupbutton', function() {game.state.start('Level2');}, this)
+    nxtlvlbutton.visible = false;
+    nxtlvlbutton.anchor.setTo(0.5, 0.5);
+    nxtlvlbutton.fixedToCamera = true;
+    nxtlvlbuttontext = game.add.text(game.camera.width / 2, (game.camera.height / 2), "Next Level", {fontSize: '22px', fill: '#fff'});
+    nxtlvlbuttontext.visible = false;
+    nxtlvlbuttontext.anchor.setTo(0.5, 0.40);
+    nxtlvlbuttontext.fixedToCamera = true;
 
     controls = this.input.keyboard.createCursorKeys();
 
@@ -139,7 +145,7 @@ Game.Level1.prototype = {
     }
 
     if(checkOverlap(player, mummy1.mummy)){
-      this.resetPlayer();
+      this.state.start('Level1');
     }
 
     if(checkOverlap(player, item1.item)){
@@ -194,15 +200,10 @@ Game.Level1.prototype = {
     }
   }
     if(itemsLeft == 0 && (item3.item.popup.visible == false && item3.item.popup.visible == false && item2.item.popup.visible == false)){ //This checks that all three pop ups have been read and closed before enabling the next level button
-      lvl2button.visible = true;
-      lvl2buttontext.visible = true;
+      nxtlvlbutton.visible = true;
+      nxtlvlbuttontext.visible = true;
   }
 },
-
-  resetPlayer: function(){
-    this.state.start('Level1');
-  },
-
 
 }
 

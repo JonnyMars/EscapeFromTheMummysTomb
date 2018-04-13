@@ -11,8 +11,8 @@ var controls = {};
 var playerSpeed = 250;
 var itemsleft;
 var counter;
-var lvl2button;
-var lvl2buttontext;
+var nxtlvlbutton;
+var nxtlvlbuttontext;
 
 Game.Level2.prototype = {
 
@@ -25,6 +25,12 @@ Game.Level2.prototype = {
 
     map.addTilesetImage('tileset');
 
+    /* - music, this stays througout the states.
+    var music = game.add.audio('soundtrack', true);
+    music.loop = true;
+    music.play();
+    */
+
     layer = map.createLayer('Background');
     platformslayer = map.createLayer('Platforms');
 
@@ -32,7 +38,7 @@ Game.Level2.prototype = {
 
     map.setCollisionBetween(1, 100, true, 'Platforms');
 
-    counter = this.add.text(16, 16, 'Items -- Left: 3', {fontSize: '32px', fill: '#000'});
+    counter = this.add.text(16, 16, 'Items Left: 3', {fontSize: '32px', fill: '#000'});
     counter.fixedToCamera = true;
     itemsLeft = 3;
 
@@ -46,22 +52,22 @@ Game.Level2.prototype = {
     player.body.collideWorldBounds = true;
 
 
-    lvl2button = game.add.button(game.camera.width / 2, game.camera.height / 2, 'popupbutton', function() {game.state.start('Level1');}, this)
-    lvl2button.visible = false;
-    lvl2button.anchor.setTo(0.5, 0.5);
-    lvl2button.fixedToCamera = true;
-    lvl2buttontext = game.add.text(game.camera.width / 2, (game.camera.height / 2), "Next Level", {fontSize: '19px', fill: '#fff'});
-    lvl2buttontext.visible = false;
-    lvl2buttontext.anchor.setTo(0.5, 0.40);
-    lvl2buttontext.fixedToCamera = true;
+    nxtlvlbutton = game.add.button(game.camera.width / 2, game.camera.height / 2, 'popupbutton', function() {game.state.start('Level2');}, this)
+    nxtlvlbutton.visible = false;
+    nxtlvlbutton.anchor.setTo(0.5, 0.5);
+    nxtlvlbutton.fixedToCamera = true;
+    nxtlvlbuttontext = game.add.text(game.camera.width / 2, (game.camera.height / 2), "Next Level", {fontSize: '22px', fill: '#fff'});
+    nxtlvlbuttontext.visible = false;
+    nxtlvlbuttontext.anchor.setTo(0.5, 0.40);
+    nxtlvlbuttontext.fixedToCamera = true;
 
     controls = this.input.keyboard.createCursorKeys();
 
     mummy1 = new Mummy(0, game, 550, 380, 3, 1000, 340); //Mummy's starting position.
 
-    item1 = new Item(0, game, 500, 570, "\n  BOTTLE \n \n \n \n \n This fancy bottle allowed \n the owner to drink in the \n afterlife. Having it in the \n tomb, even when empty, \n guarantees an ever-lasting \n supply of drink.", 0.35, 'bottle', 110, 0.6, 0.55); //image, height, scalex, scaley
-    item2 = new Item(0, game, 1050, 200, "\n  FIRE STICK \n \n \n \n \n This 'fire stick' was rotated \n at speed against this piece \n of wood to create enough \n friction to light a fire. \n This provided fire and \n warmth for cooking in the \n afterlife.", 0.35, 'firestick', 117, 0.6, 0.55);
-    item3 = new Item(0, game, 302, 100, "\n  GOLD MASK \n \n \n \n \n This mask would be placed \n over the head of a mummy \n to protect it. The feather \n pattern may represent the \n protective wings of the  \n goddess Isis or the bird- \n like spirit of the dead 'Ba'.", 0.35, 'goldmask', 120, 0.6, 0.55);
+    item1 = new Item(0, game, 500, 570, "\n  dab \n \n \n \n \n This fancy bottle allowed \n the owner to drink in the \n afterlife. Having it in the \n tomb, even when empty, \n guarantees an ever-lasting \n supply of drink.", 0.35, 'modelgirl', 110); //image, height, scalex, scaley
+    item2 = new Item(0, game, 1050, 200, "\n  FIRE STICK \n \n \n \n \n This 'fire stick' was rotated \n at speed against this piece \n of wood to create enough \n friction to light a fire. \n This provided fire and \n warmth for cooking in the \n afterlife.", 0.35, 'boat', 117);
+    item3 = new Item(0, game, 302, 100, "\n  GOLD MASK \n \n \n \n \n This mask would be placed \n over the head of a mummy \n to protect it. The feather \n pattern may represent the \n protective wings of the  \n goddess Isis or the bird- \n like spirit of the dead 'Ba'.", 0.35, 'harp', 120);
 
 
   },
@@ -95,7 +101,7 @@ Game.Level2.prototype = {
     }
 
     if(checkOverlap(player, mummy1.mummy)){
-      this.resetPlayer();
+      this.state.start('Level1');
     }
 
     if(checkOverlap(player, item1.item)){
@@ -150,20 +156,11 @@ Game.Level2.prototype = {
     }
   }
     if(itemsLeft == 0 && (item3.item.popup.visible == false && item3.item.popup.visible == false && item2.item.popup.visible == false)){ //This checks that all three pop ups have been read and closed before enabling the next level button
-      lvl2button.visible = true;
-      lvl2buttontext.visible = true;
+      nxtlvlbutton.visible = true;
+      nxtlvlbuttontext.visible = true;
   }
 },
 
-  resetPlayer: function(){
-    this.state.start('Level1');
-  },
-
-
-}
-
-function actionOnClick(){
-  this.game.state.start('Level1');
 }
 
 function checkOverlap(spriteA, spriteB){

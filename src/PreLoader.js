@@ -24,6 +24,8 @@ Game.PreLoader.prototype = {
     this.load.spritesheet('item', 'assets/itemsheet.png', 32, 32);
     this.load.image('popup', 'assets/popupbackground.png');
     this.load.image('popupbutton', 'assets/button.png');
+    this.load.audio('soundtrack', 'assets/sound/soundtrack.mp3');
+    this.load.spritesheet('player', 'assets/spritesheet-64-high.png', 35, 64);
 
     //Level 1 assets
 
@@ -32,13 +34,21 @@ Game.PreLoader.prototype = {
     this.load.image('bottle', 'assets/items/bottle.png');
     this.load.image('firestick', 'assets/items/firestick.png');
     this.load.image('goldmask', 'assets/items/goldmask.png');
-    this.load.spritesheet('player', 'assets/spritesheet-64-high.png', 35, 64);
+
+
+    //Level 2 assets
+
+    this.load.tilemap('map', 'lvl/lvl1.json', null, Phaser.Tilemap.TILED_JSON);
+    this.load.image('tileset', 'lvl/tilemap.png');
+    this.load.image('boat', 'assets/items/boat.png');
+    this.load.image('harp', 'assets/items/harp.png');
+    this.load.image('modelgirl', 'assets/items/modelgirl.png');
 
 
 
   },
 
   create:function(){
-    this.state.start('Level2');
+    this.state.start('Level1');
   }
 }
