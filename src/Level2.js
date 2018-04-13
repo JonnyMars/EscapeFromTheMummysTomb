@@ -32,7 +32,7 @@ Game.Level2.prototype = {
 
     map.setCollisionBetween(1, 100, true, 'Platforms');
 
-    counter = this.add.text(16, 16, 'Items Left: 3', {fontSize: '32px', fill: '#000'});
+    counter = this.add.text(16, 16, 'Items -- Left: 3', {fontSize: '32px', fill: '#000'});
     counter.fixedToCamera = true;
     itemsLeft = 3;
 
@@ -50,7 +50,7 @@ Game.Level2.prototype = {
     lvl2button.visible = false;
     lvl2button.anchor.setTo(0.5, 0.5);
     lvl2button.fixedToCamera = true;
-    lvl2buttontext = game.add.text(game.camera.width / 2, (game.camera.height / 2), "Next Level", {fontSize: '22px', fill: '#fff'});
+    lvl2buttontext = game.add.text(game.camera.width / 2, (game.camera.height / 2), "Next Level", {fontSize: '19px', fill: '#fff'});
     lvl2buttontext.visible = false;
     lvl2buttontext.anchor.setTo(0.5, 0.40);
     lvl2buttontext.fixedToCamera = true;
@@ -59,9 +59,9 @@ Game.Level2.prototype = {
 
     mummy1 = new Mummy(0, game, 550, 380, 3, 1000, 340); //Mummy's starting position.
 
-    item1 = new Item(0, game, 500, 570, "\n                 BOTTLE \n \n \n \n \n This fancy bottle allowed \n the owner to drink in the \n afterlife. Having it in the \n tomb, even when empty, \n guarantees an ever-lasting \n supply of drink.", 0.35, 'bottle', 110, 0.6, 0.55); //image, height, scalex, scaley
-    item2 = new Item(0, game, 1050, 200, "\n               FIRE STICK \n \n \n \n \n This 'fire stick' was rotated \n at speed against this piece \n of wood to create enough \n friction to light a fire. \n This provided fire and \n warmth for cooking in the \n afterlife.", 0.35, 'firestick', 117, 0.6, 0.55);
-    item3 = new Item(0, game, 302, 100, "\n              GOLD MASK \n \n \n \n \n This mask would be placed \n over the head of a mummy \n to protect it. The feather \n pattern may represent the \n protective wings of the  \n goddess Isis or the bird- \n like spirit of the dead 'Ba'.", 0.35, 'goldmask', 120, 0.6, 0.55);
+    item1 = new Item(0, game, 500, 570, "\n  BOTTLE \n \n \n \n \n This fancy bottle allowed \n the owner to drink in the \n afterlife. Having it in the \n tomb, even when empty, \n guarantees an ever-lasting \n supply of drink.", 0.35, 'bottle', 110, 0.6, 0.55); //image, height, scalex, scaley
+    item2 = new Item(0, game, 1050, 200, "\n  FIRE STICK \n \n \n \n \n This 'fire stick' was rotated \n at speed against this piece \n of wood to create enough \n friction to light a fire. \n This provided fire and \n warmth for cooking in the \n afterlife.", 0.35, 'firestick', 117, 0.6, 0.55);
+    item3 = new Item(0, game, 302, 100, "\n  GOLD MASK \n \n \n \n \n This mask would be placed \n over the head of a mummy \n to protect it. The feather \n pattern may represent the \n protective wings of the  \n goddess Isis or the bird- \n like spirit of the dead 'Ba'.", 0.35, 'goldmask', 120, 0.6, 0.55);
 
 
   },
