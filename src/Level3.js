@@ -48,7 +48,7 @@ Game.Level3.prototype = {
     itemsLeft = 3;
 
     //652 1850
-    player = this.add.sprite(1200, 1850, 'player');
+    player = this.add.sprite(652, 1850, 'player');
     player.anchor.setTo(0.5, 0.5);
 
     player.animations.add('right', [0, 1, 2], 4, true);
@@ -74,11 +74,11 @@ Game.Level3.prototype = {
 
     controls = this.input.keyboard.createCursorKeys();
 
-    mummy1 = new Mummy(0, game, 230, 765, 3, 1000, 435); //Mummy's starting position. - index, game, x, y, frame, tweenspeed, tweenx
-    mummy2 = new Mummy(0, game, 720, 765, 3, 1000, 480); //Mummy's starting position. - index, game, x, y, frame, tweenspeed, tweenx
-    mummy3 = new Mummy(0, game, 1070, 1120, 3, 1450, 716); //Mummy's starting position. - index, game, x, y, frame, tweenspeed, tweenx
-    mummy4 = new Mummy(0, game, 1230, 1760, 3, 900, 1070); //Mummy's starting position. - index, game, x, y, frame, tweenspeed, tweenx
-    mummy5 = new Mummy(0, game, 48, 1760, 3, 1450, 208); //Mummy's starting position. - index, game, x, y, frame, tweenspeed, tweenx
+    mummy1 = new Mummy(0, game, 230, 765, 3, 1000, 435);
+    mummy2 = new Mummy(0, game, 720, 765, 3, 1000, 480);
+    mummy3 = new Mummy(0, game, 1070, 1120, 3, 1450, 716);
+    mummy4 = new Mummy(0, game, 1230, 1760, 3, 900, 1070);
+    mummy5 = new Mummy(0, game, 48, 1760, 3, 900, 208);
 
     item1 = new Item(0, game, 1230, 1400, "\n RAZOR \n \n \n \n \n \nThis metal razor would have\nbeen used for shaving people's\n hair in ancient Egyptian times.\nPriests would shave their hair\nto help them keep clean", 0.35, 'razor', 105); //image, height, scalex, scaley
     item2 = new Item(0, game, 50, 720, "\nNECKLACE\n \n \n \n \n \nThis necklace is made up of\nball and cylinder shaped beads\nwith amulets. It has a pendant,\nwhich has been made to look\nlike a freshwater oyster shell.", 0.35, 'necklace', 102);
@@ -105,6 +105,8 @@ Game.Level3.prototype = {
     mummy1.mummy.animations.play('mummy');
     mummy2.mummy.animations.play('mummy');
     mummy3.mummy.animations.play('mummy');
+    mummy4.mummy.animations.play('mummy');
+    mummy5.mummy.animations.play('mummy');
 
     if (controls.right.isDown) {
       player.animations.play('right');
@@ -121,7 +123,7 @@ Game.Level3.prototype = {
       player.body.velocity.y = -600;
     }
 
-    if (checkOverlap(player, mummy1.mummy) || checkOverlap(player, mummy2.mummy) || checkOverlap(player, mummy3.mummy)) {
+    if (checkOverlap(player, mummy1.mummy) || checkOverlap(player, mummy2.mummy) || checkOverlap(player, mummy3.mummy) || checkOverlap(player, mummy4.mummy) || checkOverlap(player, mummy5.mummy)) {
       this.state.start('Level3');
     }
 

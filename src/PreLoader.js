@@ -53,6 +53,8 @@ Game.PreLoader.prototype = {
     this.load.image('razor', 'assets/items/razor.png');
     this.load.image('sandals', 'assets/items/sandals.png');
 
+    //Quiz
+
 
   },
 
