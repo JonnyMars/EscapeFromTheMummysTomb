@@ -115,7 +115,12 @@ Game.Level1.prototype = {
 
 
     if(!Phaser.Device.desktop){
-      game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+      game.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
+      game.scale.pageAlignHorizontally = true;
+      game.scale.pageAlignVertically = true;
+      game.scale.forceOrientation(false, true);
+      game.scale.updateLayout(true);
+      game.scale.refresh();
       game.input.onDown.add(function() {
         if (game.scale.isFullScreen)
       {
