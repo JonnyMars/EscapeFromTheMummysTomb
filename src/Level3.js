@@ -48,7 +48,7 @@ Game.Level3.prototype = {
     itemsLeft = 3;
 
     //652 1850
-    player = this.add.sprite(100, 100, 'player');
+    player = this.add.sprite(1200, 1850, 'player');
     player.anchor.setTo(0.5, 0.5);
 
     player.animations.add('right', [0, 1, 2], 4, true);
@@ -74,13 +74,15 @@ Game.Level3.prototype = {
 
     controls = this.input.keyboard.createCursorKeys();
 
-    mummy1 = new Mummy(0, game, 200, 1850, 3, 680, 220); //Mummy's starting position. - index, game, x, y, frame, tweenspeed, tweenx
-    mummy2 = new Mummy(0, game, 200, 1850, 3, 620, 220); //Mummy's starting position. - index, game, x, y, frame, tweenspeed, tweenx
-    mummy3 = new Mummy(0, game, 200, 1850, 3, 1100, 220); //Mummy's starting position. - index, game, x, y, frame, tweenspeed, tweenx
+    mummy1 = new Mummy(0, game, 230, 765, 3, 1000, 435); //Mummy's starting position. - index, game, x, y, frame, tweenspeed, tweenx
+    mummy2 = new Mummy(0, game, 720, 765, 3, 1000, 480); //Mummy's starting position. - index, game, x, y, frame, tweenspeed, tweenx
+    mummy3 = new Mummy(0, game, 1070, 1120, 3, 1450, 716); //Mummy's starting position. - index, game, x, y, frame, tweenspeed, tweenx
+    mummy4 = new Mummy(0, game, 1230, 1760, 3, 900, 1070); //Mummy's starting position. - index, game, x, y, frame, tweenspeed, tweenx
+    mummy5 = new Mummy(0, game, 48, 1760, 3, 1450, 208); //Mummy's starting position. - index, game, x, y, frame, tweenspeed, tweenx
 
     item1 = new Item(0, game, 1230, 1400, "\n RAZOR \n \n \n \n \n \nThis metal razor would have\nbeen used for shaving people's\n hair in ancient Egyptian times.\nPriests would shave their hair\nto help them keep clean", 0.35, 'razor', 105); //image, height, scalex, scaley
     item2 = new Item(0, game, 50, 720, "\nNECKLACE\n \n \n \n \n \nThis necklace is made up of\nball and cylinder shaped beads\nwith amulets. It has a pendant,\nwhich has been made to look\nlike a freshwater oyster shell.", 0.35, 'necklace', 102);
-    item3 = new Item(0, game, 50, 210, "\nSANDALS\n \n \n \n \n \nSandals were valued personal\nposessions. The dead person\nwould always be sure they had \nfootwear in the afterlife.", 0.35, 'sandals', 90);
+    item3 = new Item(0, game, 50, 210, "\nSANDALS\n \n \n \n \n \nSandals were valued personal\nposessions. The dead person\nwould always be sure they had \nfootwear in the afterlife.", 0.35, 'sandals', 90 );
 
 
 
@@ -92,6 +94,8 @@ Game.Level3.prototype = {
     this.physics.arcade.collide(mummy1.mummy, platformslayer);
     this.physics.arcade.collide(mummy2.mummy, platformslayer);
     this.physics.arcade.collide(mummy3.mummy, platformslayer);
+    this.physics.arcade.collide(mummy4.mummy, platformslayer);
+    this.physics.arcade.collide(mummy5.mummy, platformslayer);
     this.physics.arcade.collide(item1.item, platformslayer);
     this.physics.arcade.collide(item2.item, platformslayer);
     this.physics.arcade.collide(item3.item, platformslayer);
