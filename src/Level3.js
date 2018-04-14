@@ -47,7 +47,8 @@ Game.Level3.prototype = {
 
     itemsLeft = 3;
 
-    player = this.add.sprite(652, 1850, 'player');
+    //652 1850
+    player = this.add.sprite(100, 100, 'player');
     player.anchor.setTo(0.5, 0.5);
 
     player.animations.add('right', [0, 1, 2], 4, true);
@@ -63,7 +64,7 @@ Game.Level3.prototype = {
     nxtlvlbutton.visible = false;
     nxtlvlbutton.anchor.setTo(0.5, 0.5);
     nxtlvlbutton.fixedToCamera = true;
-    nxtlvlbuttontext = game.add.text(game.camera.width / 2, (game.camera.height / 2), "Next Level", {
+    nxtlvlbuttontext = game.add.text(game.camera.width / 2, (game.camera.height / 2), "Quiz", {
       fontSize: '22px',
       fill: '#fff'
     });
@@ -77,9 +78,9 @@ Game.Level3.prototype = {
     mummy2 = new Mummy(0, game, 200, 1850, 3, 620, 220); //Mummy's starting position. - index, game, x, y, frame, tweenspeed, tweenx
     mummy3 = new Mummy(0, game, 200, 1850, 3, 1100, 220); //Mummy's starting position. - index, game, x, y, frame, tweenspeed, tweenx
 
-    item1 = new Item(0, game, 1870, 100, "\nWOODEN MODEL OF A GIRL \n \n \n \n \nThis servant carries a basket\nof food on her head and\nholds two geese in her\nhand. When placed inside\nthe tomb she guarantees\nthe dead person an\neternal supply of food.", 0.35, 'modelgirl', 120); //image, height, scalex, scaley
-    item2 = new Item(0, game, 50, 100, "\nWOODEN MODEL OF A BOAT\n \n \n \n \nOn this pleasure cruiser,\nthe sailors raise the sail\nto catch the wind. It is in the\ntomb to provide transport\nfor the dead person.\nOnly very important people\ncould afford a boat like this.", 0.35, 'boat', 117);
-    item3 = new Item(0, game, 730, 100, "\nWOODEN HARP\n \n \n \n \nThis five-stringed shoulder harp\nis from the tomb of Senuatef\nand his family. This would\nhave allowed the dead person\nto enjoy music and poetry\nat parties in the afterlife.", 0.35, 'harp', 110);
+    item1 = new Item(0, game, 1230, 1400, "\n RAZOR \n \n \n \n \n \nThis metal razor would have\nbeen used for shaving people's\n hair in ancient Egyptian times.\nPriests would shave their hair\nto help them keep clean", 0.35, 'razor', 105); //image, height, scalex, scaley
+    item2 = new Item(0, game, 50, 720, "\nNECKLACE\n \n \n \n \n \nThis necklace is made up of\nball and cylinder shaped beads\nwith amulets. It has a pendant,\nwhich has been made to look\nlike a freshwater oyster shell.", 0.35, 'necklace', 102);
+    item3 = new Item(0, game, 50, 210, "\nSANDALS\n \n \n \n \n \nSandals were valued personal\nposessions. The dead person\nwould always be sure they had \nfootwear in the afterlife.", 0.35, 'sandals', 90);
 
 
 
