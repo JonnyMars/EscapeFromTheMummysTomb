@@ -42,16 +42,21 @@ Game.PreLoader.prototype = {
     //Level 2 assets
 
     this.load.tilemap('map2', 'lvl/lvl2.json', null, Phaser.Tilemap.TILED_JSON);
-    this.load.image('tileset', 'lvl/tilemap.png');
     this.load.image('boat', 'assets/items/boat.png');
     this.load.image('harp', 'assets/items/harp.png');
     this.load.image('modelgirl', 'assets/items/modelgirl.png');
 
 
+    //Level 3 assets
+    this.load.tilemap('map3', 'lvl/lvl3.json', null, Phaser.Tilemap.TILED_JSON);
+    this.load.image('necklace', 'assets/items/necklace.png');
+    this.load.image('razor', 'assets/items/razor.png');
+    this.load.image('sandals', 'assets/items/sandals.png');
+
 
   },
 
   create:function(){
-    this.state.start('Level2');
+    this.state.start('Level3');
   }
 }
