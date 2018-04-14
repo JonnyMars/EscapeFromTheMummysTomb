@@ -26,6 +26,7 @@ Game.PreLoader.prototype = {
     this.load.image('popupbutton', 'assets/button.png');
     this.load.audio('soundtrack', 'assets/sound/soundtrack.mp3');
     this.load.spritesheet('player', 'assets/spritesheet-64-high.png', 35, 64);
+    this.load.image('tileset', 'lvl/tilemap.png');
 
 
     // this.game.add.text(0, 0, 'hack', {font:"55px PAPYRUS", fill:"#FFFFFF"}); do this to enable font!
@@ -33,7 +34,6 @@ Game.PreLoader.prototype = {
     //Level 1 assets
 
     this.load.tilemap('map', 'lvl/lvl1.json', null, Phaser.Tilemap.TILED_JSON);
-    this.load.image('tileset', 'lvl/tilemap.png');
     this.load.image('bottle', 'assets/items/bottle.png');
     this.load.image('firestick', 'assets/items/firestick.png');
     this.load.image('goldmask', 'assets/items/goldmask.png');
@@ -41,7 +41,7 @@ Game.PreLoader.prototype = {
 
     //Level 2 assets
 
-    this.load.tilemap('map', 'lvl/lvl1.json', null, Phaser.Tilemap.TILED_JSON);
+    this.load.tilemap('map2', 'lvl/lvl2.json', null, Phaser.Tilemap.TILED_JSON);
     this.load.image('tileset', 'lvl/tilemap.png');
     this.load.image('boat', 'assets/items/boat.png');
     this.load.image('harp', 'assets/items/harp.png');
@@ -52,6 +52,6 @@ Game.PreLoader.prototype = {
   },
 
   create:function(){
-    this.state.start('Level1');
+    this.state.start('Level2');
   }
 }

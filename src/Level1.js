@@ -24,9 +24,9 @@ function Item(index, game, x, y, text, textHeightAdjust, image, imgheight){
   this.item.popup.anchor.setTo(0.5, 0.5);
   this.item.popup.fixedToCamera = true;
   this.item.popup.visible = false;
-  this.item.info = game.add.text((game.camera.width / 2) - 150, (game.camera.height / 2) - 100, text, {fontSize: '22px', fill: '#fff', align: 'center'});
+  this.item.info = game.add.text(game.camera.width / 2, (game.camera.height / 2) - 100, text, {fontSize: '22px', fill: '#fff', align: 'center'});
   this.item.info.visible = false;
-  this.item.info.anchor.setTo(0, textHeightAdjust);
+  this.item.info.anchor.setTo(0.5, textHeightAdjust);
   this.item.info.fixedToCamera = true;
   this.item.button = game.add.button(game.camera.width / 2, (game.camera.height / 2) + 200, 'popupbutton', function() {this.item.popup.visible = false; this.item.info.visible = false; this.item.button.visible = false; this.item.image.visible = false; this.item.buttontext.visible = false;}, this)
   this.item.button.anchor.setTo(0.5, 0.5);

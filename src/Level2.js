@@ -21,7 +21,7 @@ Game.Level2.prototype = {
 
     this.physics.arcade.gravity.y = 1400;
 
-    map = this.add.tilemap('map', 1, 100);
+    map = this.add.tilemap('map2', 1, 100);
 
     map.addTilesetImage('tileset');
 
@@ -42,7 +42,7 @@ Game.Level2.prototype = {
     counter.fixedToCamera = true;
     itemsLeft = 3;
 
-    player = this.add.sprite(100, 620,'player');
+    player = this.add.sprite(960, 900,'player');
     player.anchor.setTo(0.5, 0.5);
 
     player.animations.add('right', [0, 1, 2], 4, true);
@@ -63,11 +63,15 @@ Game.Level2.prototype = {
 
     controls = this.input.keyboard.createCursorKeys();
 
-    mummy1 = new Mummy(0, game, 550, 380, 3, 1000, 340); //Mummy's starting position.
+    mummy1 = new Mummy(0, game, 50, 600, 3, 680, 220); //Mummy's starting position. - index, game, x, y, frame, tweenspeed, tweenx
+    mummy2 = new Mummy(0, game, 1870, 600, 3, 620, 1700); //Mummy's starting position. - index, game, x, y, frame, tweenspeed, tweenx
+    mummy3 = new Mummy(0, game, 890, 100, 3, 950, 1050); //Mummy's starting position. - index, game, x, y, frame, tweenspeed, tweenx
 
-    item1 = new Item(0, game, 500, 570, "\n  dab \n \n \n \n \n This fancy bottle allowed \n the owner to drink in the \n afterlife. Having it in the \n tomb, even when empty, \n guarantees an ever-lasting \n supply of drink.", 0.35, 'modelgirl', 110); //image, height, scalex, scaley
-    item2 = new Item(0, game, 1050, 200, "\n  FIRE STICK \n \n \n \n \n This 'fire stick' was rotated \n at speed against this piece \n of wood to create enough \n friction to light a fire. \n This provided fire and \n warmth for cooking in the \n afterlife.", 0.35, 'boat', 117);
-    item3 = new Item(0, game, 302, 100, "\n  GOLD MASK \n \n \n \n \n This mask would be placed \n over the head of a mummy \n to protect it. The feather \n pattern may represent the \n protective wings of the  \n goddess Isis or the bird- \n like spirit of the dead 'Ba'.", 0.35, 'harp', 120);
+    item1 = new Item(0, game, 1870, 100, "\nWOODEN MODEL OF A GIRL \n \n \n \n \nThis servant carries a basket\nof food on her head and\nholds two geese in her\nhand. When placed inside\nthe tomb she guarantees\nthe dead person an\neternal supply of food.", 0.35, 'modelgirl', 120); //image, height, scalex, scaley
+    item2 = new Item(0, game, 50, 100, "\nWOODEN MODEL OF A BOAT\n \n \n \n \nOn this pleasure cruiser,\nthe sailors raise the sail\nto catch the wind. It is in the\ntomb to provide transport\nfor the dead person.\nOnly very important people\ncould afford a boat like this.", 0.35, 'boat', 117);
+    item3 = new Item(0, game, 800, 100, "\nWOODEN HARP\n \n \n \n \nThis five-stringed shoulder harp\nis from the tomb of Senuatef\nand his family. This would\nhave allowed the dead person\nto enjoy music and poetry\nat parties in the afterlife.", 0.35, 'harp', 110);
+
+
 
 
   },
@@ -75,6 +79,8 @@ Game.Level2.prototype = {
   update: function(game){
     this.physics.arcade.collide(player, platformslayer);
     this.physics.arcade.collide(mummy1.mummy, platformslayer);
+    this.physics.arcade.collide(mummy2.mummy, platformslayer);
+    this.physics.arcade.collide(mummy3.mummy, platformslayer);
     this.physics.arcade.collide(item1.item, platformslayer);
     this.physics.arcade.collide(item2.item, platformslayer);
     this.physics.arcade.collide(item3.item, platformslayer);
@@ -100,8 +106,8 @@ Game.Level2.prototype = {
       player.body.velocity.y = -600;
     }
 
-    if(checkOverlap(player, mummy1.mummy)){
-      this.state.start('Level1');
+    if(checkOverlap(player, mummy1.mummy) || checkOverlap(player, mummy2.mummy) || checkOverlap(player, mummy3.mummy)){
+      this.state.start('Level2');
     }
 
     if(checkOverlap(player, item1.item)){
