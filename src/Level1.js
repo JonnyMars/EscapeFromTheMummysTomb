@@ -113,6 +113,7 @@ Game.Level1.prototype = {
     item2 = new Item(0, game, 1050, 200, "\n  FIRE STICK \n \n \n \n \n This 'fire stick' was rotated \n at speed against this piece \n of wood to create enough \n friction to light a fire. \n This provided fire and \n warmth for cooking in the \n afterlife.", 0.35, 'firestick', 117);
     item3 = new Item(0, game, 302, 100, "\n  GOLD MASK \n \n \n \n \n This mask would be placed \n over the head of a mummy \n to protect it. The feather \n pattern may represent the \n protective wings of the  \n goddess Isis or the bird- \n like spirit of the dead 'Ba'.", 0.35, 'goldmask', 120);
 
+    /*
     game.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
     game.input.onDown.add(function() {
       if (game.scale.isFullScreen)
@@ -124,6 +125,7 @@ Game.Level1.prototype = {
         game.scale.startFullScreen(false);
     }
     }, this);
+    */
 
   },
 
