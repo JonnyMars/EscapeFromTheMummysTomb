@@ -116,6 +116,7 @@ Game.Level1.prototype = {
 
     if(!Phaser.Device.desktop){
       game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+      game.scale.pageAlignHorizontally = true;
       game.scale.pageAlignVertically = true;
       game.scale.forceOrientation(false, true);
       game.scale.updateLayout(true);
