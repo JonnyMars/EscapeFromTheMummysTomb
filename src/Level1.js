@@ -86,7 +86,7 @@ Game.Level1.prototype = {
     counter.fixedToCamera = true;
     itemsLeft = 3;
 
-    player = this.add.sprite(100, 620,'player');
+    player = this.add.sprite(500, 570,'player');
     player.anchor.setTo(0.5, 0.5);
 
     player.animations.add('right', [0, 1, 2], 4, true);
