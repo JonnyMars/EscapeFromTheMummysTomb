@@ -1,31 +1,31 @@
 <!doctype html>
 <html>
-  <meta charset="UTF-8"/>
-  <link rel="stylesheet" type="text/css" href="assets/css/fontLoader.css">
-  <title>Escape From The Mummy's Tomb</title>
-  <script src="src/phaser.min.js"></script>
-  <script src="src/Boot.js"></script>
-  <script src="src/PreLoader.js"></script>
-  <script src="src/Title.js"></script>
-  <script src="src/Level1.js"></script>
-  <script src="src/Level2.js"></script>
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" href="assets/css/fontLoader.css">
+<title>Escape From The Mummy's Tomb</title>
+<script src="src/phaser.min.js"></script>
+<script src="src/Boot.js"></script>
+<script src="src/PreLoader.js"></script>
+<script src="src/Title.js"></script>
+<script src="src/Level1.js"></script>
+<script src="src/Level2.js"></script>
 
-  <body>
-    <script type = "text/javascript">
-      window.onload = function(){
-        var game = new Phaser.Game(640, 480, Phaser.AUTO, '');
+<body>
+  <script type="text/javascript">
+    window.onload = function() {
+      var game = new Phaser.Game(640, 480, Phaser.AUTO, '');
 
-        game.state.add('Boot', Game.Boot);
-        game.state.add('PreLoader', Game.PreLoader);
-        game.state.add('Title', Game.Title);
-        game.state.add('Level1', Game.Level1);
-        game.state.add('Level2', Game.Level2);
+      game.state.add('Boot', Game.Boot);
+      game.state.add('PreLoader', Game.PreLoader);
+      game.state.add('Title', Game.Title);
+      game.state.add('Level1', Game.Level1);
+      game.state.add('Level2', Game.Level2);
 
-        game.state.start('Boot');
-      }
+      game.state.start('Boot');
+    }
+  </script>
 
-    </script>
 
+</body>
 
-  </body>
 </html>

@@ -1,5 +1,4 @@
-
-Game.Level2 = function(game){};
+Game.Level2 = function(game) {};
 
 var map;
 var backgroundlayer;
@@ -16,7 +15,7 @@ var nxtlvlbuttontext;
 
 Game.Level2.prototype = {
 
-  create:function(game){
+  create: function(game) {
     this.stage.backgroundColor = '#3A5963'
 
     this.physics.arcade.gravity.y = 1400;
@@ -38,12 +37,17 @@ Game.Level2.prototype = {
 
     map.setCollisionBetween(1, 100, true, 'Platforms');
 
-    counter = this.add.text(16, 16, 'Items Left: 3', {fontSize: '32px', fill: '#000', stroke: '#ffffff', strokeThickness: 4});
+    counter = this.add.text(16, 16, 'Items Left: 3', {
+      fontSize: '32px',
+      fill: '#000',
+      stroke: '#ffffff',
+      strokeThickness: 4
+    });
     counter.fixedToCamera = true;
 
     itemsLeft = 3;
 
-    player = this.add.sprite(960, 900,'player');
+    player = this.add.sprite(960, 900, 'player');
     player.anchor.setTo(0.5, 0.5);
 
     player.animations.add('right', [0, 1, 2], 4, true);
@@ -53,11 +57,16 @@ Game.Level2.prototype = {
     player.body.collideWorldBounds = true;
 
 
-    nxtlvlbutton = game.add.button(game.camera.width / 2, game.camera.height / 2, 'popupbutton', function() {game.state.start('Level2');}, this)
+    nxtlvlbutton = game.add.button(game.camera.width / 2, game.camera.height / 2, 'popupbutton', function() {
+      game.state.start('Level2');
+    }, this)
     nxtlvlbutton.visible = false;
     nxtlvlbutton.anchor.setTo(0.5, 0.5);
     nxtlvlbutton.fixedToCamera = true;
-    nxtlvlbuttontext = game.add.text(game.camera.width / 2, (game.camera.height / 2), "Next Level", {fontSize: '22px', fill: '#fff'});
+    nxtlvlbuttontext = game.add.text(game.camera.width / 2, (game.camera.height / 2), "Next Level", {
+      fontSize: '22px',
+      fill: '#fff'
+    });
     nxtlvlbuttontext.visible = false;
     nxtlvlbuttontext.anchor.setTo(0.5, 0.40);
     nxtlvlbuttontext.fixedToCamera = true;
@@ -77,7 +86,7 @@ Game.Level2.prototype = {
 
   },
 
-  update: function(game){
+  update: function(game) {
     this.physics.arcade.collide(player, platformslayer);
     this.physics.arcade.collide(mummy1.mummy, platformslayer);
     this.physics.arcade.collide(mummy2.mummy, platformslayer);
@@ -95,86 +104,86 @@ Game.Level2.prototype = {
     if (controls.right.isDown) {
       player.animations.play('right');
       player.body.velocity.x += playerSpeed;
-    }
-    else if(controls.left.isDown){
+    } else if (controls.left.isDown) {
       player.animations.play('left')
       player.body.velocity.x -= playerSpeed;
-    }
-    else {
+    } else {
       player.animations.stop();
       player.frame = 3;
     }
 
-    if(controls.up.isDown && (player.body.onFloor() || player.body.touching.down)){
+    if (controls.up.isDown && (player.body.onFloor() || player.body.touching.down)) {
       player.body.velocity.y = -600;
     }
 
-    if(checkOverlap(player, mummy1.mummy) || checkOverlap(player, mummy2.mummy) || checkOverlap(player, mummy3.mummy)){
+    if (checkOverlap(player, mummy1.mummy) || checkOverlap(player, mummy2.mummy) || checkOverlap(player, mummy3.mummy)) {
       this.state.start('Level2');
     }
 
-    if(checkOverlap(player, item1.item)){
+    if (checkOverlap(player, item1.item)) {
       if (!item1.item.hasOverlapped) {
-            player.body.velocity.x = 0;
-            player.hasOverlapped = item1.item.hasOverlapped = true;
-            item1.item.animations.play('open');
-            itemsLeft -=1;
-            counter.text = 'Items Left: ' + itemsLeft;
-            item1.item.body.enable = false;
-            item1.item.popup.visible = true;
-            item1.item.info.visible = true;
-            item1.item.image.visible = true;
-            game.time.events.add(Phaser.Timer.SECOND * 3, function() {item1.item.button.visible = true; item1.item.buttontext.visible = true}, this);
-            game.world.bringToTop(item1.item.popup);
-            game.world.bringToTop(item1.item.info);
-            game.world.bringToTop(item1.item.image);
+        player.body.velocity.x = 0;
+        player.hasOverlapped = item1.item.hasOverlapped = true;
+        item1.item.animations.play('open');
+        itemsLeft -= 1;
+        counter.text = 'Items Left: ' + itemsLeft;
+        item1.item.body.enable = false;
+        item1.item.popup.visible = true;
+        item1.item.info.visible = true;
+        item1.item.image.visible = true;
+        game.time.events.add(Phaser.Timer.SECOND * 3, function() {
+          item1.item.button.visible = true;
+          item1.item.buttontext.visible = true
+        }, this);
+        game.world.bringToTop(item1.item.popup);
+        game.world.bringToTop(item1.item.info);
+        game.world.bringToTop(item1.item.image);
+      }
     }
-  }
-    if(checkOverlap(player, item2.item)){
+    if (checkOverlap(player, item2.item)) {
       if (!item2.item.hasOverlapped) {
-          player.body.velocity.x = 0;
-            item2.item.hasOverlapped = true;
-            item2.item.animations.play('open');
-            itemsLeft -=1;
-            counter.text = 'Items Left: ' + itemsLeft;
-            item2.item.body.enable = false;
-            item2.item.popup.visible = true;
-            item2.item.info.visible = true;
-            item2.item.image.visible = true;
-            game.time.events.add(Phaser.Timer.SECOND * 3, function() {item2.item.button.visible = true; item2.item.buttontext.visible = true}, this);
-            game.world.bringToTop(item2.item.popup);
-            game.world.bringToTop(item2.item.info);
-            game.world.bringToTop(item2.item.image);
+        player.body.velocity.x = 0;
+        item2.item.hasOverlapped = true;
+        item2.item.animations.play('open');
+        itemsLeft -= 1;
+        counter.text = 'Items Left: ' + itemsLeft;
+        item2.item.body.enable = false;
+        item2.item.popup.visible = true;
+        item2.item.info.visible = true;
+        item2.item.image.visible = true;
+        game.time.events.add(Phaser.Timer.SECOND * 3, function() {
+          item2.item.button.visible = true;
+          item2.item.buttontext.visible = true
+        }, this);
+        game.world.bringToTop(item2.item.popup);
+        game.world.bringToTop(item2.item.info);
+        game.world.bringToTop(item2.item.image);
+      }
     }
-  }
-    if(checkOverlap(player, item3.item)){
+    if (checkOverlap(player, item3.item)) {
       if (!item3.item.hasOverlapped) {
-            player.body.velocity.x = 0;
-            item3.item.hasOverlapped = true;
-            item3.item.animations.play('open');
-            itemsLeft -=1;
-            counter.text = 'Items Left: ' + itemsLeft;
-            item3.item.body.enable = false;
-            item3.item.popup.visible = true;
-            item3.item.info.visible = true;
-            item3.item.image.visible = true;
-            game.time.events.add(Phaser.Timer.SECOND * 3, function() {item3.item.button.visible = true; item3.item.buttontext.visible = true}, this);
-            game.world.bringToTop(item3.item.popup);
-            game.world.bringToTop(item3.item.info);
-            game.world.bringToTop(item3.item.image);
+        player.body.velocity.x = 0;
+        item3.item.hasOverlapped = true;
+        item3.item.animations.play('open');
+        itemsLeft -= 1;
+        counter.text = 'Items Left: ' + itemsLeft;
+        item3.item.body.enable = false;
+        item3.item.popup.visible = true;
+        item3.item.info.visible = true;
+        item3.item.image.visible = true;
+        game.time.events.add(Phaser.Timer.SECOND * 3, function() {
+          item3.item.button.visible = true;
+          item3.item.buttontext.visible = true
+        }, this);
+        game.world.bringToTop(item3.item.popup);
+        game.world.bringToTop(item3.item.info);
+        game.world.bringToTop(item3.item.image);
+      }
     }
-  }
-    if(itemsLeft == 0 && (item3.item.popup.visible == false && item3.item.popup.visible == false && item2.item.popup.visible == false)){ //This checks that all three pop ups have been read and closed before enabling the next level button
+    if (itemsLeft == 0 && (item3.item.popup.visible == false && item3.item.popup.visible == false && item2.item.popup.visible == false)) { //This checks that all three pop ups have been read and closed before enabling the next level button
       nxtlvlbutton.visible = true;
       nxtlvlbuttontext.visible = true;
-  }
-},
+    }
+  },
 
-}
-
-function checkOverlap(spriteA, spriteB){
-  var boundsA = spriteA.getBounds();
-  var boundsB = spriteB.getBounds();
-
-  return Phaser.Rectangle.intersects(boundsA, boundsB);
 }
