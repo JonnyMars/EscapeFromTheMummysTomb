@@ -27,6 +27,9 @@ Game.PreLoader.prototype = {
     this.load.audio('soundtrack', 'assets/sound/soundtrack.mp3');
     this.load.spritesheet('player', 'assets/spritesheet-64-high.png', 35, 64);
 
+
+    // this.game.add.text(0, 0, 'hack', {font:"55px PAPYRUS", fill:"#FFFFFF"}); do this to enable font!
+
     //Level 1 assets
 
     this.load.tilemap('map', 'lvl/lvl1.json', null, Phaser.Tilemap.TILED_JSON);
