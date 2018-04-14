@@ -52,6 +52,6 @@ Game.PreLoader.prototype = {
   },
 
   create:function(){
-    this.state.start('Level2');
+    this.state.start('Level1');
   }
 }

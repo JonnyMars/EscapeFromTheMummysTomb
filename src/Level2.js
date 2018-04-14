@@ -38,8 +38,9 @@ Game.Level2.prototype = {
 
     map.setCollisionBetween(1, 100, true, 'Platforms');
 
-    counter = this.add.text(16, 16, 'Items Left: 3', {fontSize: '32px', fill: '#000'});
+    counter = this.add.text(16, 16, 'Items Left: 3', {fontSize: '32px', fill: '#000', stroke: '#ffffff', strokeThickness: 4});
     counter.fixedToCamera = true;
+
     itemsLeft = 3;
 
     player = this.add.sprite(960, 900,'player');
