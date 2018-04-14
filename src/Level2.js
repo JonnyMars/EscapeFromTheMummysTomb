@@ -65,11 +65,11 @@ Game.Level2.prototype = {
 
     mummy1 = new Mummy(0, game, 50, 600, 3, 680, 220); //Mummy's starting position. - index, game, x, y, frame, tweenspeed, tweenx
     mummy2 = new Mummy(0, game, 1870, 600, 3, 620, 1700); //Mummy's starting position. - index, game, x, y, frame, tweenspeed, tweenx
-    mummy3 = new Mummy(0, game, 890, 100, 3, 950, 1050); //Mummy's starting position. - index, game, x, y, frame, tweenspeed, tweenx
+    mummy3 = new Mummy(0, game, 800, 100, 3, 1100, 1050); //Mummy's starting position. - index, game, x, y, frame, tweenspeed, tweenx
 
     item1 = new Item(0, game, 1870, 100, "\nWOODEN MODEL OF A GIRL \n \n \n \n \nThis servant carries a basket\nof food on her head and\nholds two geese in her\nhand. When placed inside\nthe tomb she guarantees\nthe dead person an\neternal supply of food.", 0.35, 'modelgirl', 120); //image, height, scalex, scaley
     item2 = new Item(0, game, 50, 100, "\nWOODEN MODEL OF A BOAT\n \n \n \n \nOn this pleasure cruiser,\nthe sailors raise the sail\nto catch the wind. It is in the\ntomb to provide transport\nfor the dead person.\nOnly very important people\ncould afford a boat like this.", 0.35, 'boat', 117);
-    item3 = new Item(0, game, 800, 100, "\nWOODEN HARP\n \n \n \n \nThis five-stringed shoulder harp\nis from the tomb of Senuatef\nand his family. This would\nhave allowed the dead person\nto enjoy music and poetry\nat parties in the afterlife.", 0.35, 'harp', 110);
+    item3 = new Item(0, game, 730, 100, "\nWOODEN HARP\n \n \n \n \nThis five-stringed shoulder harp\nis from the tomb of Senuatef\nand his family. This would\nhave allowed the dead person\nto enjoy music and poetry\nat parties in the afterlife.", 0.35, 'harp', 110);
 
 
 
@@ -88,6 +88,8 @@ Game.Level2.prototype = {
     player.body.velocity.x = 0;
 
     mummy1.mummy.animations.play('mummy');
+    mummy2.mummy.animations.play('mummy');
+    mummy3.mummy.animations.play('mummy');
 
     if (controls.right.isDown) {
       player.animations.play('right');
