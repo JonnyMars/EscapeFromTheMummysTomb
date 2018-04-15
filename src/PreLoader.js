@@ -53,12 +53,13 @@ Game.PreLoader.prototype = {
     this.load.image('razor', 'assets/items/razor.png');
     this.load.image('sandals', 'assets/items/sandals.png');
 
-    //Quiz
+    //Quiz Assets
+    this.load.image('quizback', 'assets/quiz.png');
 
 
   },
 
   create:function(){
-    this.state.start('Level3');
+    this.state.start('Quiz3');
   }
 }
