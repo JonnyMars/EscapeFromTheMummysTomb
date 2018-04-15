@@ -41,7 +41,7 @@ function Item(index, game, x, y, text, textHeightAdjust, image, imgheight) {
     this.item.button.visible = false;
     this.item.image.visible = false;
     this.item.buttontext.visible = false;
-  }, this)
+  }, this);
   this.item.button.anchor.setTo(0.5, 0.5);
   this.item.button.fixedToCamera = true;
   this.item.button.visible = false;

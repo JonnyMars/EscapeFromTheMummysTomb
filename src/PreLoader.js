@@ -31,6 +31,9 @@ Game.PreLoader.prototype = {
 
     // this.game.add.text(0, 0, 'hack', {font:"55px PAPYRUS", fill:"#FFFFFF"}); do this to enable font!
 
+    //Title Assets
+    this.load.image('title', 'assets/title-comp.png');
+
     //Level 1 assets
 
     this.load.tilemap('map', 'lvl/lvl1.json', null, Phaser.Tilemap.TILED_JSON);
@@ -60,6 +63,6 @@ Game.PreLoader.prototype = {
   },
 
   create:function(){
-    this.state.start('Level1');
+    this.state.start('Title');
   }
 }
