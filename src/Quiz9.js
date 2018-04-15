@@ -10,7 +10,7 @@ Game.Quiz9.prototype = {
     answered = false;
 
     this.add.sprite(0, 0, 'quizback');
-    game.add.text(30 , 30, "Q9. These are models of valued\npersonal possesioned used for walking\nin the afterlife - What are these model\nsandals made of?", {fill: '#fff', fontSize:'20px'});
+    game.add.text(30 , 30, "Q9. These are models of valued\npersonal possessions used for walking\nin the afterlife - What are these model\nsandals made of?", {fill: '#fff', fontSize:'20px'});
     var img = this.add.sprite(480, 20, 'sandals');
     img.scale.setTo(0.7, 0.7);
 

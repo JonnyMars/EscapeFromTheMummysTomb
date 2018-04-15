@@ -28,6 +28,7 @@ Game.PreLoader.prototype = {
     this.load.spritesheet('player', 'assets/spritesheet-64-high.png', 35, 64);
     this.load.image('tileset', 'lvl/tilemap.png');
     this.load.image('directional', 'assets/controls/directional.png');
+    this.load.image('arrowkeys', 'assets/controls/arrowkeys.png')
 
 
     // this.game.add.text(0, 0, 'hack', {font:"55px PAPYRUS", fill:"#FFFFFF"}); do this to enable font!
@@ -37,6 +38,9 @@ Game.PreLoader.prototype = {
 
     //Intro Assets
     this.load.image('instroback', 'assets/introinstruct-comp.png');
+
+    //Instruction Assets
+    this.load.image('arrowwhite', 'assets/controls/jmpwhitebck.png');
 
     //Level 1 assets
 
