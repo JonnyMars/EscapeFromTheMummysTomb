@@ -27,8 +27,8 @@ Game.Quiz1.prototype = {
 
     this.add.sprite(0, 0, 'quizback');
     game.add.text(30, 40, "Q1. What would the bottle allow \n the owner to do in the afterlife?", {fill: '#fff'});
-    var bottleimg = this.add.sprite(480, 20, 'bottle');
-    bottleimg.scale.setTo(0.7, 0.7);
+    var img = this.add.sprite(480, 20, 'bottle');
+    img.scale.setTo(0.7, 0.7);
 
 
     counter = this.add.text(460, 16, 'Score: ' + quizscore, {
@@ -45,15 +45,15 @@ Game.Quiz1.prototype = {
       answered = true;
       quizscore += 1;
       counter.text = 'Score: ' + quizscore;
-    }, 1.05);
+    }, 1.3);
     opt2 = new Option(0, game, game.camera.width / 2, (game.camera.height / 2)+ 100 ,"B) Play Music", function() {
       game.input.enabled = false;
       answered = true;
-    }, 1.05);
+    }, 1.3);
     opt3 = new Option(0, game, game.camera.width / 2, (game.camera.height / 2) + 200, "C) Supply water for washing", function() {
       game.input.enabled = false;
       answered = true;
-    }, 1.05 );
+    }, 1.3);
 
 
   },
@@ -62,7 +62,7 @@ Game.Quiz1.prototype = {
     if(answered == true){
       opt1.option.tint = (0x00ff00);//right
       opt2.option.tint = (0xff0000);
-      opt3.option.tint = (0xff4d4d);
+      opt3.option.tint = (0xff0000);
       game.time.events.add(Phaser.Timer.SECOND * 3, function() {
         game.state.start('Quiz2');
         game.input.enabled = true;

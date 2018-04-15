@@ -13,8 +13,8 @@ Game.Quiz2.prototype = {
 
     this.add.sprite(0, 0, 'quizback');
     game.add.text(30 , 30, "Q2. These two sticks were rubbed\ntogether to create fire. Why did a\ndead person need to be able\nto make fire?", {fill: '#fff', fontSize:'20px'});
-    var bottleimg = this.add.sprite(480, 20, 'firestick');
-    bottleimg.scale.setTo(0.7, 0.7);
+    var img = this.add.sprite(480, 20, 'firestick');
+    img.scale.setTo(0.7, 0.7);
 
 
     counter = this.add.text(460, 16, 'Score: ' + quizscore, {
@@ -46,11 +46,11 @@ Game.Quiz2.prototype = {
 
   update: function(game) {
     if(answered == true){
-      opt2.option.tint = (0x00ff00);
-      opt1.option.tint = (0xff0000);//right
-      opt3.option.tint = (0xff4d4d);
+      opt2.option.tint = (0x00ff00);//right
+      opt1.option.tint = (0xff0000);
+      opt3.option.tint = (0xff0000);
       game.time.events.add(Phaser.Timer.SECOND * 3, function() {
-        game.state.start('Quiz2');
+        game.state.start('Quiz3');
         game.input.enabled = true;
       }, this);
     }
