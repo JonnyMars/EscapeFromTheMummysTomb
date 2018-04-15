@@ -37,12 +37,16 @@ Game.Level2.prototype = {
 
     map.setCollisionBetween(1, 100, true, 'Platforms');
 
+    var counterback = this.add.sprite(9, 10, 'popupbutton');
+    counterback.fixedToCamera = true;
+    counterback.scale.setTo(0.7, 1);
+    counterback.tint = (0xFFFF00);
+
     counter = this.add.text(16, 16, 'Items Left: 3', {
       fontSize: '32px',
-      fill: '#000',
-      stroke: '#ffffff',
-      strokeThickness: 4
+      fill: '#fff',
     });
+    counter.fixedToCamera = true;
     counter.fixedToCamera = true;
 
     itemsLeft = 3;

@@ -17,7 +17,7 @@ Game.Introduction.prototype = {
     info.anchor.setTo(0.5, 0);
 
     var button = this.add.button(320, 435, 'popupbutton', function() {
-      game.state.start('Title'); //CHANGE
+      game.state.start('Level1'); //CHANGE
     }, this);
     var buttontext = this.add.text(320, 435, "NEXT", {
       fill: '#fff',
