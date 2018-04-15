@@ -70,6 +70,6 @@ Game.PreLoader.prototype = {
   },
 
   create:function(){
-    this.state.start('Level3');
+    this.state.start('Title');
   }
 }
