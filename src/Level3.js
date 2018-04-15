@@ -81,7 +81,7 @@ Game.Level3.prototype = {
 
     item1 = new Item(0, game, 1230, 1400, "\n RAZOR \n \n \n \n \n \nThis metal razor would have\nbeen used for shaving people's\n hair in ancient Egyptian times.\nPriests would shave their hair\nto help them keep clean", 0.35, 'razor', 105); //image, height, scalex, scaley
     item2 = new Item(0, game, 50, 720, "\nNECKLACE\n \n \n \n \n \nThis necklace is made up of\nball and cylinder shaped beads\nwith amulets. It has a pendant,\nwhich has been made to look\nlike a freshwater oyster shell.", 0.35, 'necklace', 102);
-    item3 = new Item(0, game, 50, 210, "\nWOODEN SANDALS\n \n \n \n \n \nSandals were valued personal\nposessions. The dead person\nwould always be sure they had \nfootwear in the afterlife.", 0.35, 'sandals', 90 );
+    item3 = new Item(0, game, 50, 210, "\nWOODEN SANDALS\n \n \n \n \n \nSandals were valued personal\npossessions. The dead person\nwould always be sure they had \nfootwear in the afterlife.", 0.35, 'sandals', 90 );
 
 
 

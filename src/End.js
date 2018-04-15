@@ -19,7 +19,7 @@ Game.End.prototype = {
 
 
     game.add.text(80, 30, "Well Done!", {fill: '#fff', fontSize:'30px', align:'center'});
-    game.add.text(28  , 100, "You successfully made it\nout of the Mummy's tomb!\n\nYou scored " + quizscore + "/9 on the quiz!\nThis makes you an:", {fill: '#fff', fontSize:'20px', align:'center'});
+    game.add.text(10  , 100, "You have successfully escaped\nfrom the Mummy's tomb!\n\nYou scored " + quizscore + " / 9 on the quiz!\nThis makes you an:", {fill: '#fff', fontSize:'20px', align:'center'});
 
 
     var button = this.add.button(155, 395 , 'popupbutton', function() {
