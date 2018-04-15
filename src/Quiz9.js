@@ -38,7 +38,7 @@ Game.Quiz9.prototype = {
       opt1.option.tint = (0xff0000);
       console.log(quizscore);
       game.time.events.add(Phaser.Timer.SECOND * 3, function() {
-        game.state.start('');
+        game.state.start('End');
         game.input.enabled = true;
       }, this);
 

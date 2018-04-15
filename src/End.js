@@ -23,7 +23,7 @@ Game.End.prototype = {
 
 
     var button = this.add.button(155, 395 , 'popupbutton', function() {
-      game.state.start('Level1'); //CHANGE
+      game.state.start('Title'); //CHANGE
     }, this);
     var buttontext = this.add.text(155, 395, "PLAY AGAIN", {
       fill: '#fff',

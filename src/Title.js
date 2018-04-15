@@ -18,6 +18,25 @@ Game.Title.prototype = {
     buttontext.anchor.setTo(0.5, 0.4);
     button.anchor.setTo(0.5, 0.5);
 
+    //Fullscreen Handler - Need to check that it stays across states and then move it onto title screen
+    if (!Phaser.Device.desktop) {
+      game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+      game.scale.pageAlignHorizontally = true;
+      game.scale.pageAlignVertically = true;
+      game.scale.forceOrientation(false, false);
+      game.scale.updateLayout(true);
+      game.scale.refresh();
+      game.input.onDown.add(function() {
+        if (game.scale.isFullScreen) {
+          game.scale.stopFullScreen();
+        } else {
+          game.scale.startFullScreen(false);
+        }
+      }, this);
+    } else {
+      console.log('sup!')
+    }
+
   },
 
   update: function(game) {

@@ -32,7 +32,10 @@ Game.PreLoader.prototype = {
     // this.game.add.text(0, 0, 'hack', {font:"55px PAPYRUS", fill:"#FFFFFF"}); do this to enable font!
 
     //Title Assets
-    this.load.image('titleback', 'assets/title-comp.png');
+    this.load.image('titleback', 'assets/title-comp-white.png');
+
+    //Intro Assets
+    this.load.image('instroback', 'assets/introinstruct-comp.png');
 
     //Level 1 assets
 
@@ -66,6 +69,6 @@ Game.PreLoader.prototype = {
   },
 
   create:function(){
-    this.state.start('End');
+    this.state.start('Introduction');
   }
 }
