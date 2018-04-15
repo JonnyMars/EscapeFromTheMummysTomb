@@ -2,7 +2,6 @@
 Game.Quiz2 = function(game) {};
 
 var answered;
-var counter;
 
 Game.Quiz2.prototype = {
 
@@ -17,14 +16,6 @@ Game.Quiz2.prototype = {
     img.scale.setTo(0.7, 0.7);
 
 
-    counter = this.add.text(460, 16, 'Score: ' + quizscore, {
-      fontSize: '32px',
-      fill: '#000',
-      stroke: '#ffffff',
-      strokeThickness: 4
-    });
-
-    counter.fixedToCamera = true;
 
     opt1 = new Option(0, game, game.camera.width / 2, game.camera.height / 2, "A) Light", function() {
       game.input.enabled = false;
@@ -34,7 +25,6 @@ Game.Quiz2.prototype = {
       game.input.enabled = false;
       answered = true;
       quizscore += 1;
-      counter.text = 'Score: ' + quizscore;
     }, 1.3);
     opt3 = new Option(0, game, game.camera.width / 2, (game.camera.height / 2) + 200, "C) Protection against the evil spirits", function() {
       game.input.enabled = false;

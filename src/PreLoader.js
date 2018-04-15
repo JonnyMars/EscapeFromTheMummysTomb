@@ -60,6 +60,6 @@ Game.PreLoader.prototype = {
   },
 
   create:function(){
-    this.state.start('Quiz7');
+    this.state.start('Level1');
   }
 }

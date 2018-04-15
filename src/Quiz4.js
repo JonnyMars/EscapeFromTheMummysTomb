@@ -2,7 +2,6 @@
 Game.Quiz4 = function(game) {};
 
 var answered;
-var counter;
 
 Game.Quiz4.prototype = {
 
@@ -17,15 +16,6 @@ Game.Quiz4.prototype = {
     img.scale.setTo(0.7, 0.7);
 
 
-    counter = this.add.text(460, 16, 'Score: ' + quizscore, {
-      fontSize: '32px',
-      fill: '#000',
-      stroke: '#ffffff',
-      strokeThickness: 4
-    });
-
-    counter.fixedToCamera = true;
-
     opt1 = new Option(0, game, game.camera.width / 2, game.camera.height / 2, "A) Help catch fish to eat", function() {
       game.input.enabled = false;
       answered = true;
@@ -38,7 +28,6 @@ Game.Quiz4.prototype = {
       game.input.enabled = false;
       answered = true;
       quizscore += 1;
-      counter.text = 'Score: ' + quizscore;
     }, 1.3);
 
 
