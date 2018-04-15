@@ -6,7 +6,7 @@ Game.Title.prototype = {
   create: function(game) {
 
 
-    this.add.sprite(0, 0, 'title');
+    this.add.sprite(0, 0, 'titleback');
 
     var button = this.add.button((game.camera.width / 2) - 10, (game.camera.height / 2) + 190, 'popupbutton', function() {
       game.state.start('Level1'); //CHANGE
