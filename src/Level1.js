@@ -73,6 +73,9 @@ var itemsleft;
 var counter;
 var nxtlvlbutton;
 var nxtlvlbuttontext;
+var jump = false;
+var right = false;
+var left = false;
 
 Game.Level1.prototype = {
 
@@ -142,6 +145,36 @@ Game.Level1.prototype = {
     item2 = new Item(0, game, 1050, 200, "\n  FIRE STICK \n \n \n \n \n This 'fire stick' was rotated \n at speed against this piece \n of wood to create enough \n friction to light a fire. \n This provided fire and \n warmth for cooking in the \n afterlife.", 0.35, 'firestick', 117);
     item3 = new Item(0, game, 302, 100, "\n  GOLD MASK \n \n \n \n \n This mask would be placed \n over the head of a mummy \n to protect it. The feather \n pattern may represent the \n protective wings of the  \n goddess Isis or the bird- \n like spirit of the dead 'Ba'.", 0.35, 'goldmask', 120);
 
+    if (!Phaser.Device.desktop) {
+      buttonjump = game.add.button(600, 440, 'directional');
+      buttonjump.fixedToCamera = true;
+      buttonjump.anchor.setTo(0.5, 0.5);
+      buttonjump.events.onInputOver.add(function(){jump = true;});
+      buttonjump.events.onInputOut.add(function(){jump = false;});
+      buttonjump.events.onInputDown.add(function(){jump = true;});
+      buttonjump.events.onInputUp.add(function(){jump = false;});
+
+      buttonleft = game.add.button(41, 440, 'directional');
+      buttonleft.fixedToCamera = true;
+      buttonleft.anchor.setTo(0.5, 0.5);
+      buttonleft.angle = 270;
+      buttonleft.events.onInputOver.add(function(){left = true;});
+      buttonleft.events.onInputOut.add(function(){left = false;});
+      buttonleft.events.onInputDown.add(function(){left = true;});
+      buttonleft.events.onInputUp.add(function(){left = false;});
+
+      buttonright = game.add.button(120, 440, 'directional');
+      buttonright.fixedToCamera = true;
+      buttonright.anchor.setTo(0.5, 0.5);
+      buttonright.angle = 90;
+      buttonright.events.onInputOver.add(function(){right = true;});
+      buttonright.events.onInputOut.add(function(){right = false;});
+      buttonright.events.onInputDown.add(function(){right = true;});
+      buttonright.events.onInputUp.add(function(){right = false;});
+
+    }
+
+
 
   },
 
@@ -156,10 +189,10 @@ Game.Level1.prototype = {
 
     mummy1.mummy.animations.play('mummy');
 
-    if (controls.right.isDown) {
+    if (controls.right.isDown || right == true) {
       player.animations.play('right');
       player.body.velocity.x += playerSpeed;
-    } else if (controls.left.isDown) {
+    } else if (controls.left.isDown || left == true) {
       player.animations.play('left')
       player.body.velocity.x -= playerSpeed;
     } else {
@@ -167,7 +200,7 @@ Game.Level1.prototype = {
       player.frame = 3;
     }
 
-    if (controls.up.isDown && (player.body.onFloor() || player.body.touching.down)) {
+    if (controls.up.isDown && (player.body.onFloor() || player.body.touching.down) || jump == true && (player.body.onFloor() || player.body.touching.down)) {
       player.body.velocity.y = -600;
 
     }

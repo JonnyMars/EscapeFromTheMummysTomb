@@ -27,6 +27,7 @@ Game.PreLoader.prototype = {
     this.load.audio('soundtrack', 'assets/sound/soundtrack.mp3');
     this.load.spritesheet('player', 'assets/spritesheet-64-high.png', 35, 64);
     this.load.image('tileset', 'lvl/tilemap.png');
+    this.load.image('directional', 'assets/controls/directional.png');
 
 
     // this.game.add.text(0, 0, 'hack', {font:"55px PAPYRUS", fill:"#FFFFFF"}); do this to enable font!

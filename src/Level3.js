@@ -12,6 +12,9 @@ var itemsleft;
 var counter;
 var nxtlvlbutton;
 var nxtlvlbuttontext;
+var jump = false;
+var right = false;
+var left = false;
 
 Game.Level3.prototype = {
 
@@ -86,7 +89,34 @@ Game.Level3.prototype = {
     item2 = new Item(0, game, 50, 720, "\nNECKLACE\n \n \n \n \n \nThis necklace is made up of\nball and cylinder shaped beads\nwith amulets. It has a pendant,\nwhich has been made to look\nlike a freshwater oyster shell.", 0.35, 'necklace', 102);
     item3 = new Item(0, game, 50, 210, "\nWOODEN SANDALS\n \n \n \n \n \nSandals were valued personal\npossessions. The dead person\nwould always be sure they had \nfootwear in the afterlife.", 0.35, 'sandals', 90 );
 
+    if (!Phaser.Device.desktop) {
+      buttonjump = game.add.button(600, 440, 'directional');
+      buttonjump.fixedToCamera = true;
+      buttonjump.anchor.setTo(0.5, 0.5);
+      buttonjump.events.onInputOver.add(function(){jump = true;});
+      buttonjump.events.onInputOut.add(function(){jump = false;});
+      buttonjump.events.onInputDown.add(function(){jump = true;});
+      buttonjump.events.onInputUp.add(function(){jump = false;});
 
+      buttonleft = game.add.button(41, 440, 'directional');
+      buttonleft.fixedToCamera = true;
+      buttonleft.anchor.setTo(0.5, 0.5);
+      buttonleft.angle = 270;
+      buttonleft.events.onInputOver.add(function(){left = true;});
+      buttonleft.events.onInputOut.add(function(){left = false;});
+      buttonleft.events.onInputDown.add(function(){left = true;});
+      buttonleft.events.onInputUp.add(function(){left = false;});
+
+      buttonright = game.add.button(120, 440, 'directional');
+      buttonright.fixedToCamera = true;
+      buttonright.anchor.setTo(0.5, 0.5);
+      buttonright.angle = 90;
+      buttonright.events.onInputOver.add(function(){right = true;});
+      buttonright.events.onInputOut.add(function(){right = false;});
+      buttonright.events.onInputDown.add(function(){right = true;});
+      buttonright.events.onInputUp.add(function(){right = false;});
+
+    }
 
 
   },
@@ -110,10 +140,10 @@ Game.Level3.prototype = {
     mummy4.mummy.animations.play('mummy');
     mummy5.mummy.animations.play('mummy');
 
-    if (controls.right.isDown) {
+    if (controls.right.isDown || right == true) {
       player.animations.play('right');
       player.body.velocity.x += playerSpeed;
-    } else if (controls.left.isDown) {
+    } else if (controls.left.isDown || left == true) {
       player.animations.play('left')
       player.body.velocity.x -= playerSpeed;
     } else {
@@ -121,10 +151,10 @@ Game.Level3.prototype = {
       player.frame = 3;
     }
 
-    if (controls.up.isDown && (player.body.onFloor() || player.body.touching.down)) {
+    if (controls.up.isDown && (player.body.onFloor() || player.body.touching.down) || jump == true && (player.body.onFloor() || player.body.touching.down)) {
       player.body.velocity.y = -600;
     }
-
+    
     if (checkOverlap(player, mummy1.mummy) || checkOverlap(player, mummy2.mummy) || checkOverlap(player, mummy3.mummy) || checkOverlap(player, mummy4.mummy) || checkOverlap(player, mummy5.mummy)) {
       this.state.start('Level3');
     }
