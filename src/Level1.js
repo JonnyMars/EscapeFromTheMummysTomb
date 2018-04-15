@@ -184,6 +184,7 @@ Game.Level1.prototype = {
 
     if (controls.up.isDown && (player.body.onFloor() || player.body.touching.down)) {
       player.body.velocity.y = -600;
+
     }
 
     if (checkOverlap(player, mummy1.mummy)) {

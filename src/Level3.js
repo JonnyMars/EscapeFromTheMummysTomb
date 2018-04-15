@@ -58,7 +58,7 @@ Game.Level3.prototype = {
     player.body.collideWorldBounds = true;
 
     nxtlvlbutton = game.add.button(game.camera.width / 2, game.camera.height / 2, 'popupbutton', function() {
-      game.state.start('Level3');
+      game.state.start('Quiz1');
     }, this)
     nxtlvlbutton.visible = false;
     nxtlvlbutton.anchor.setTo(0.5, 0.5);

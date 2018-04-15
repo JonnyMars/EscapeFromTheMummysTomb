@@ -25,7 +25,7 @@ Game.Quiz1.prototype = {
     answered = false;
 
     this.add.sprite(0, 0, 'quizback');
-    game.add.text(30, 40, "Q1. What would the bottle allow \n the owner to do in the afterlife?", {fill: '#fff', fontSize: '20px'});
+    game.add.text(30, 40, "Q1. What would this bottle allow \n the owner to do in the afterlife?", {fill: '#fff', fontSize: '20px'});
     var img = this.add.sprite(480, 20, 'bottle');
     img.scale.setTo(0.7, 0.7);
 
