@@ -69,6 +69,6 @@ Game.PreLoader.prototype = {
   },
 
   create:function(){
-    this.state.start('Title');
+    this.state.start('Introduction');
   }
 }

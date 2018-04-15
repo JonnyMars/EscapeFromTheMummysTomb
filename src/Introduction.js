@@ -13,21 +13,18 @@ Game.Introduction.prototype = {
 
     var title = game.add.text(315, 44, "YOUR ADVENTURE BEGINS...", {fill: '#fff', fontSize:'25px', align:'center'});
     title.anchor.setTo(0.5, 0.5);
-    var info = game.add.text(310  , 80, "You have successfully escaped\nfrom the Mummy's tomb!\n\nYou scored " + quizscore + " / 9 on the quiz!\nThis makes you an:", {fill: '#fff', fontSize:'20px', align:'center'});
+    var info = game.add.text(310  , 85, "You are an explorer who has\ndiscovered an ancient tomb in\nBeni Hasan, Egypt. Inside you will\nfind many items that are thousands\nof years old. You must collect the\nitems and bring them safely back\nto the museum \n\n But watch out, there are some\nMummies on the loose!", {fill: '#fff', fontSize:'20px', align:'center'});
     info.anchor.setTo(0.5, 0);
 
-    /*
-    var button = this.add.button(155, 395 , 'popupbutton', function() {
+    var button = this.add.button(320, 435, 'popupbutton', function() {
       game.state.start('Title'); //CHANGE
     }, this);
-    var buttontext = this.add.text(155, 395, "PLAY AGAIN", {
+    var buttontext = this.add.text(320, 435, "NEXT", {
       fill: '#fff',
       align: 'center'
     });
     buttontext.anchor.setTo(0.5, 0.4);
     button.anchor.setTo(0.5, 0.5);
-    button.scale.setTo(0.9, 0.9);
-    */
 
   },
 
