@@ -74,6 +74,6 @@ Game.PreLoader.prototype = {
   },
 
   create:function(){
-    this.state.start('Level1');
+    this.state.start('Title');
   }
 }

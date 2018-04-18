@@ -21,8 +21,8 @@ Game.End.prototype = {
     game.add.text(80, 30, "Well Done!", {fill: '#fff', fontSize:'30px', align:'center'});
     game.add.text(10  , 100, "You have successfully escaped\nfrom the Mummy's tomb!\n\nYou scored " + quizscore + " / 9 on the quiz!\nThis makes you an:", {fill: '#fff', fontSize:'20px', align:'center'});
 
-
     var button = this.add.button(155, 395 , 'popupbutton', function() {
+      quizscore = 0;
       game.state.start('Title'); //CHANGE
     }, this);
     var buttontext = this.add.text(155, 395, "PLAY AGAIN", {
