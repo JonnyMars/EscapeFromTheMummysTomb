@@ -66,6 +66,7 @@ Game.Level2.prototype = {
 
     nxtlvlbutton = game.add.button(game.camera.width / 2, game.camera.height / 2, 'popupbutton', function() {
       game.state.start('Level3');
+      playermove = true;
     }, this)
     nxtlvlbutton.visible = false;
     nxtlvlbutton.anchor.setTo(0.5, 0.5);
@@ -138,10 +139,10 @@ Game.Level2.prototype = {
     mummy2.mummy.animations.play('mummy');
     mummy3.mummy.animations.play('mummy');
 
-    if (controls.right.isDown || right == true) {
+    if (controls.right.isDown && playermove == true || right == true && playermove == true) {
       player.animations.play('right');
       player.body.velocity.x += playerSpeed;
-    } else if (controls.left.isDown || left == true) {
+    } else if (controls.left.isDown && playermove == true  || left == true && playermove == true) {
       player.animations.play('left')
       player.body.velocity.x -= playerSpeed;
     } else {
@@ -149,7 +150,7 @@ Game.Level2.prototype = {
       player.frame = 3;
     }
 
-    if (controls.up.isDown && (player.body.onFloor() || player.body.touching.down) || jump == true && (player.body.onFloor() || player.body.touching.down)) {
+    if (controls.up.isDown && (player.body.onFloor() || player.body.touching.down) && playermove == true  || jump == true && (player.body.onFloor() || player.body.touching.down) && playermove == true ) {
       player.body.velocity.y = -600;
 
     }
@@ -176,6 +177,7 @@ Game.Level2.prototype = {
         game.world.bringToTop(item1.item.popup);
         game.world.bringToTop(item1.item.info);
         game.world.bringToTop(item1.item.image);
+        playermove = false;
       }
     }
     if (checkOverlap(player, item2.item)) {
@@ -196,6 +198,7 @@ Game.Level2.prototype = {
         game.world.bringToTop(item2.item.popup);
         game.world.bringToTop(item2.item.info);
         game.world.bringToTop(item2.item.image);
+        playermove = false;
       }
     }
     if (checkOverlap(player, item3.item)) {
@@ -216,11 +219,13 @@ Game.Level2.prototype = {
         game.world.bringToTop(item3.item.popup);
         game.world.bringToTop(item3.item.info);
         game.world.bringToTop(item3.item.image);
+        playermove = false;
       }
     }
     if (itemsLeft == 0 && (item3.item.popup.visible == false && item3.item.popup.visible == false && item2.item.popup.visible == false)) { //This checks that all three pop ups have been read and closed before enabling the next level button
       nxtlvlbutton.visible = true;
       nxtlvlbuttontext.visible = true;
+      playermove = false;
     }
   },
 

@@ -41,6 +41,7 @@ function Item(index, game, x, y, text, textHeightAdjust, image, imgheight) {
     this.item.button.visible = false;
     this.item.image.visible = false;
     this.item.buttontext.visible = false;
+    playermove = true;
   }, this);
   this.item.button.anchor.setTo(0.5, 0.5);
   this.item.button.fixedToCamera = true;
@@ -58,6 +59,8 @@ function Item(index, game, x, y, text, textHeightAdjust, image, imgheight) {
   this.item.image.scale.setTo(0.6, 0.55)
   this.item.image.visible = false;
 }
+
+var playermove = true;
 
 Game.Level1 = function(game) {};
 
@@ -125,6 +128,7 @@ Game.Level1.prototype = {
 
     nxtlvlbutton = game.add.button(game.camera.width / 2, game.camera.height / 2, 'popupbutton', function() {
       game.state.start('Level2');
+      playermove = true;
     }, this)
     nxtlvlbutton.visible = false;
     nxtlvlbutton.anchor.setTo(0.5, 0.5);
@@ -175,7 +179,7 @@ Game.Level1.prototype = {
       buttonright.events.onInputDown.add(function(){right = true;});
       buttonright.events.onInputUp.add(function(){right = false;});
 
-    }
+}
 
 
 
@@ -192,10 +196,10 @@ Game.Level1.prototype = {
 
     mummy1.mummy.animations.play('mummy');
 
-    if (controls.right.isDown || right == true) {
+    if (controls.right.isDown && playermove == true || right == true && playermove == true) {
       player.animations.play('right');
       player.body.velocity.x += playerSpeed;
-    } else if (controls.left.isDown || left == true) {
+    } else if (controls.left.isDown && playermove == true  || left == true && playermove == true) {
       player.animations.play('left')
       player.body.velocity.x -= playerSpeed;
     } else {
@@ -203,7 +207,7 @@ Game.Level1.prototype = {
       player.frame = 3;
     }
 
-    if (controls.up.isDown && (player.body.onFloor() || player.body.touching.down) || jump == true && (player.body.onFloor() || player.body.touching.down)) {
+    if (controls.up.isDown && (player.body.onFloor() || player.body.touching.down) && playermove == true  || jump == true && (player.body.onFloor() || player.body.touching.down) && playermove == true ) {
       player.body.velocity.y = -600;
 
     }
@@ -230,6 +234,7 @@ Game.Level1.prototype = {
         game.world.bringToTop(item1.item.popup);
         game.world.bringToTop(item1.item.info);
         game.world.bringToTop(item1.item.image);
+        playermove = false;
       }
     }
     if (checkOverlap(player, item2.item)) {
@@ -250,6 +255,7 @@ Game.Level1.prototype = {
         game.world.bringToTop(item2.item.popup);
         game.world.bringToTop(item2.item.info);
         game.world.bringToTop(item2.item.image);
+        playermove = false;
       }
     }
     if (checkOverlap(player, item3.item)) {
@@ -270,11 +276,13 @@ Game.Level1.prototype = {
         game.world.bringToTop(item3.item.popup);
         game.world.bringToTop(item3.item.info);
         game.world.bringToTop(item3.item.image);
+        playermove = false;
       }
     }
     if (itemsLeft == 0 && (item3.item.popup.visible == false && item3.item.popup.visible == false && item2.item.popup.visible == false)) { //This checks that all three pop ups have been read and closed before enabling the next level button
       nxtlvlbutton.visible = true;
       nxtlvlbuttontext.visible = true;
+      playermove = false;
     }
   },
 
