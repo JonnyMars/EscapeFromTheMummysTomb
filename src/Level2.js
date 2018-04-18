@@ -89,26 +89,29 @@ Game.Level2.prototype = {
     item3 = new Item(0, game, 730, 100, "\nWOODEN HARP\n \n \n \n \nThis five-stringed shoulder harp\nis from the tomb of Senuatef\nand his family. This would\nhave allowed the dead person\nto enjoy music and poetry\nat parties in the afterlife.", 0.35, 'harp', 110);
 
     if (!Phaser.Device.desktop) {
-      buttonjump = game.add.button(600, 440, 'directional');
+      buttonjump = game.add.button(593, 432, 'directional');
       buttonjump.fixedToCamera = true;
       buttonjump.anchor.setTo(0.5, 0.5);
+      buttonjump.scale.setTo(1.2, 1.2);
       buttonjump.events.onInputOver.add(function(){jump = true;});
       buttonjump.events.onInputOut.add(function(){jump = false;});
       buttonjump.events.onInputDown.add(function(){jump = true;});
       buttonjump.events.onInputUp.add(function(){jump = false;});
 
-      buttonleft = game.add.button(41, 440, 'directional');
+      buttonleft = game.add.button(49 , 432, 'directional');
       buttonleft.fixedToCamera = true;
       buttonleft.anchor.setTo(0.5, 0.5);
+      buttonleft.scale.setTo(1.20, 1.20);
       buttonleft.angle = 270;
       buttonleft.events.onInputOver.add(function(){left = true;});
       buttonleft.events.onInputOut.add(function(){left = false;});
       buttonleft.events.onInputDown.add(function(){left = true;});
       buttonleft.events.onInputUp.add(function(){left = false;});
 
-      buttonright = game.add.button(120, 440, 'directional');
+      buttonright = game.add.button(144, 432, 'directional');
       buttonright.fixedToCamera = true;
       buttonright.anchor.setTo(0.5, 0.5);
+      buttonright.scale.setTo(1.20, 1.20);
       buttonright.angle = 90;
       buttonright.events.onInputOver.add(function(){right = true;});
       buttonright.events.onInputOut.add(function(){right = false;});

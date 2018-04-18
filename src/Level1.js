@@ -146,26 +146,29 @@ Game.Level1.prototype = {
     item3 = new Item(0, game, 302, 100, "\n  GOLD MASK \n \n \n \n \n This mask would be placed \n over the head of a mummy \n to protect it. The feather \n pattern may represent the \n protective wings of the  \n goddess Isis or the bird- \n like spirit of the dead 'Ba'.", 0.35, 'goldmask', 120);
 
     if (!Phaser.Device.desktop) {
-      buttonjump = game.add.button(600, 440, 'directional');
+      buttonjump = game.add.button(593, 432, 'directional');
       buttonjump.fixedToCamera = true;
       buttonjump.anchor.setTo(0.5, 0.5);
+      buttonjump.scale.setTo(1.2, 1.2);
       buttonjump.events.onInputOver.add(function(){jump = true;});
       buttonjump.events.onInputOut.add(function(){jump = false;});
       buttonjump.events.onInputDown.add(function(){jump = true;});
       buttonjump.events.onInputUp.add(function(){jump = false;});
 
-      buttonleft = game.add.button(41, 440, 'directional');
+      buttonleft = game.add.button(49 , 432, 'directional');
       buttonleft.fixedToCamera = true;
       buttonleft.anchor.setTo(0.5, 0.5);
+      buttonleft.scale.setTo(1.20, 1.20);
       buttonleft.angle = 270;
       buttonleft.events.onInputOver.add(function(){left = true;});
       buttonleft.events.onInputOut.add(function(){left = false;});
       buttonleft.events.onInputDown.add(function(){left = true;});
       buttonleft.events.onInputUp.add(function(){left = false;});
 
-      buttonright = game.add.button(120, 440, 'directional');
+      buttonright = game.add.button(144, 432, 'directional');
       buttonright.fixedToCamera = true;
       buttonright.anchor.setTo(0.5, 0.5);
+      buttonright.scale.setTo(1.20, 1.20);
       buttonright.angle = 90;
       buttonright.events.onInputOver.add(function(){right = true;});
       buttonright.events.onInputOut.add(function(){right = false;});
