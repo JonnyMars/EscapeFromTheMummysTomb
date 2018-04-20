@@ -3,6 +3,7 @@
 <meta charset="UTF-8" />
 <link rel="stylesheet" type="text/css" href="assets/css/fontLoader.css">
 <title>Escape From The Mummy's Tomb</title>
+<!-- LOAD IN ALL STATES -->
 <script src="src/phaser.min.js"></script>
 <script src="src/Boot.js"></script>
 <script src="src/PreLoader.js"></script>
@@ -24,10 +25,11 @@
 <script src="src/End.js"></script>
 
 <body>
+  <!-- GAME -->
   <script type="text/javascript">
     window.onload = function() {
       var game = new Phaser.Game(640, 480, Phaser.AUTO, '');
-
+      //Add all JS files to state within phaser
       game.state.add('Boot', Game.Boot);
       game.state.add('PreLoader', Game.PreLoader);
       game.state.add('Title', Game.Title);
@@ -46,7 +48,7 @@
       game.state.add('Quiz8', Game.Quiz8);
       game.state.add('Quiz9', Game.Quiz9);
       game.state.add('End', Game.End);
-
+      //Load BOOT state when all loaded
       game.state.start('Boot');
     }
   </script>
