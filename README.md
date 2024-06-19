@@ -1,0 +1,1 @@
+Museum Game Project Repo for Uni (Final Year) - The task was to recreate Liverpool Museums "Escape from the Mummy's tomb" game (http://www.liverpoolmuseums.org.uk/kids/games-quizzes/egypt-mummys/) using web standards compliant technologies. I used the PhaserJS 2.6.2 (https://phaser.io/) game framework to create this, which was a new technology to me before this task.
